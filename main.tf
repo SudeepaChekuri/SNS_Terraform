@@ -51,7 +51,7 @@ resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
 resource "aws_lambda_function" "my_lambda" {
   function_name    = "my-lambda"  # Replace with your desired function name
   role             = aws_iam_role.lambda_role.arn
-  handler          = "index.handler"  # Replace with your Lambda function handler
+  handler          = "lambda_function.lambda_handler"  # Replace with your Lambda function handler
   runtime          = "nodejs14.x"  # Replace with your desired runtime
   timeout          = 10  # Replace with your desired timeout value
   memory_size      = 128  # Replace with your desired memory size
