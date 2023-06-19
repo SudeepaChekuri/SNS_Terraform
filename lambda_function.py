@@ -1,14 +1,10 @@
-import json
-
 def lambda_handler(event, context):
-    num1 = event['num1']
-    num2 = event['num2']
-    
-    sum = num1 + num2
-    
-    response = {
+    message = event['Records'][0]['Sns']['Message']
+    print("Received SNS message:", message)
+
+    # Perform any desired operations with the message
+
+    return {
         'statusCode': 200,
-        'body': json.dumps({'result': sum})
+        'body': 'SNS message processed successfully'
     }
-    
-    return response
