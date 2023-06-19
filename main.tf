@@ -14,10 +14,10 @@ resource "aws_sqs_queue" "my_queue" {
 }
 
 # Configure SNS to publish to SQS
-resource "aws_sns_topic_subscription" "sqs_subscription" {
+resource "aws_sns_topic_subscription" "lambda_subscription" {
   topic_arn = aws_sns_topic.my_topic.arn
-  protocol  = "sqs"
-  endpoint  = aws_sqs_queue.my_queue.arn
+  protocol  = "lambda"
+  endpoint  = aws_lambda_function.my_lambda.arn
 }
 
 # Create an IAM role for the Lambda function
