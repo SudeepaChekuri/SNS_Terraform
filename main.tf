@@ -56,8 +56,8 @@ resource "aws_lambda_function" "my_lambda" {
   timeout          = 10  # Replace with your desired timeout value
   memory_size      = 128  # Replace with your desired memory size
   publish          = true  # Set to false if you don't want to publish a new version
-  source_code_hash = filebase64sha256("lambda_function.zip")  # Replace with your Lambda deployment package filename
+  source_code_hash = filebase64sha256("lambda_function.py")  # Replace with your Lambda deployment package filename
 
   # Specify your Lambda function's source code
-  filename = "lambda_function.zip"  # Replace with your Lambda deployment package filename
+  filename = "lambda_function.py"  # Replace with your Lambda deployment package filename
 }
