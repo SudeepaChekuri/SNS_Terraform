@@ -22,6 +22,16 @@ jobs:
         run: |
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          
+      - name: Deploy Lambda function
+        run: |
+          aws lambda create-function \
+            --function-name my-lambda-function \
+            --runtime python3.8 \
+            --handler lambda_function.lambda_handler \
+            --zip-file fileb://lambda_function.zip \
+            --role arn:aws:iam::123456789012:role/lambda-role
+
 
       - name: Initialize Terraform
         run: terraform init
